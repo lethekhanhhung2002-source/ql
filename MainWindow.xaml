@@ -1,0 +1,97 @@
+﻿<Window x:Class="_1_12_2025.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="MainWindow" Height="600" Width="900"
+        WindowStartupLocation="CenterScreen">
+
+    <DockPanel LastChildFill="True">
+        <Menu DockPanel.Dock="Top" Background="WhiteSmoke">
+            <MenuItem Header="Hệ thống" />
+            <MenuItem Header="Quản lý" />
+            <MenuItem Header="Trợ giúp" />
+        </Menu>
+
+        <Grid Margin="10">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="3*" />
+                <ColumnDefinition Width="1*" MaxWidth="250"/>
+            </Grid.ColumnDefinitions>
+
+            <Grid Grid.Column="0" Margin="0,0,10,0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+
+                <GroupBox Header="Thông tin sinh viên" Grid.Row="0" Margin="0,0,0,10" Padding="5">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="140"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="30"/>
+                            <RowDefinition Height="30"/>
+                            <RowDefinition Height="80"/>
+                            <RowDefinition Height="30"/>
+                            <RowDefinition Height="30"/>
+                            <RowDefinition Height="30"/>
+                        </Grid.RowDefinitions>
+
+                        <Label Content="Mã số sinh viên (MSSV):" Grid.Row="0" VerticalAlignment="Center"/>
+                        <TextBox x:Name="txtMaSV" Grid.Row="0" Grid.Column="1" VerticalAlignment="Center" Height="22"/>
+
+                        <Label Content="Họ tên:" Grid.Row="1" VerticalAlignment="Center"/>
+                        <TextBox x:Name="txtHoTen" Grid.Row="1" Grid.Column="1" VerticalAlignment="Center" Height="22"/>
+
+                        <Label Content="Địa chỉ:" Grid.Row="2" VerticalAlignment="Top" Margin="0,5,0,0"/>
+                        <TextBox x:Name="txtDiaChi" Grid.Row="2" Grid.Column="1" Margin="0,5,0,5" 
+                                 TextWrapping="Wrap" AcceptsReturn="True" VerticalScrollBarVisibility="Auto"/>
+
+                        <Label Content="Giới tính:" Grid.Row="3" VerticalAlignment="Center"/>
+                        <StackPanel Grid.Row="3" Grid.Column="1" Orientation="Horizontal" VerticalAlignment="Center">
+                            <RadioButton x:Name="rdoNam" Content="Nam" GroupName="GioiTinh" Margin="0,0,15,0" IsChecked="True"/>
+                            <RadioButton x:Name="rdoNu" Content="Nữ" GroupName="GioiTinh" Margin="0,0,15,0"/>
+                            <RadioButton x:Name="rdoKhac" Content="Khác" GroupName="GioiTinh"/>
+                        </StackPanel>
+
+                        <Label Content="Ngày Sinh:" Grid.Row="4" VerticalAlignment="Center"/>
+                        <DatePicker x:Name="dpNgaySinh" Grid.Row="4" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Stretch"/>
+
+                        <Label Content="Chọn môn học:" Grid.Row="5" VerticalAlignment="Center"/>
+                        <ComboBox x:Name="cbb_MonHoc" Grid.Row="5" Grid.Column="1" VerticalAlignment="Center" Height="22"/>
+                    </Grid>
+                </GroupBox>
+
+                <DataGrid x:Name="DG_SinhVien" Grid.Row="1" AutoGenerateColumns="False"
+                          SelectionChanged="DG_SinhVien_SelectionChanged">
+                </DataGrid>
+            </Grid>
+
+            <GroupBox Grid.Column="1" Header="Chức năng" Padding="5">
+                <StackPanel>
+                    <Grid Margin="0,0,0,10">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                        </Grid.RowDefinitions>
+
+                        <Button x:Name="btnLoad" Content="Load dữ liệu" Margin="2" Padding="5" Click="btnLoad_Click"/>
+                        <Button x:Name="btnThem" Content="Thêm" Grid.Column="1" Margin="2" Padding="5" Click="btnThem_Click"/>
+
+                        <Button x:Name="btnSua" Content="Sửa" Grid.Row="1" Grid.Column="0" Margin="2" Padding="5" Click="btnSua_Click"/>
+                        <Button x:Name="btnXoa" Content="Xóa" Grid.Row="1" Grid.Column="1" Margin="2" Padding="5" Click="btnXoa_Click"/>
+                    </Grid>
+
+                    <Button x:Name="btnTimKiem" Content="Tìm kiếm" Margin="2,10,2,2" Padding="5" Click="btnTimKiem_Click"/>
+                    <TextBox x:Name="txtTimKiem" Margin="2" Height="25" VerticalContentAlignment="Center"/>
+
+                </StackPanel>
+            </GroupBox>
+        </Grid>
+    </DockPanel>
+</Window>
